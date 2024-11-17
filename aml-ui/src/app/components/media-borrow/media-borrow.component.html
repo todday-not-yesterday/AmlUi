@@ -1,3 +1,8 @@
+<app-filter-media
+  [mediaEnquiryType]="mediaEnquiryType"
+  (filtersEvent)="updateFilters($event)"
+></app-filter-media>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="Name">
     <th mat-header-cell *matHeaderCellDef>Name of Media</th>

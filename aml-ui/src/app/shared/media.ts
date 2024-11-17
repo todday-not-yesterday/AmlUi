@@ -5,4 +5,4 @@ export interface Media {
     mediaType: string;
     available: boolean;
     branchName: string;
-  }  
+}  
