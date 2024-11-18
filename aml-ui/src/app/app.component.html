@@ -9,6 +9,13 @@
         </mat-list-item>
       </a>
 
+      <a routerLink="/Media-Return" (click)="sidenav.close()">
+        <mat-list-item>
+          <i class="material-icons">loop</i>
+          Media Return
+        </mat-list-item>
+      </a>
+
       <a routerLink="#" (click)="sidenav.close()">
         <mat-list-item>
           <i class="material-icons">person</i>
@@ -30,6 +37,8 @@
       <i class="material-icons">menu</i>
     </button>
   </div>
+
+
 
   <!-- Component wrapped here -->
   <router-outlet />
