@@ -1,0 +1,23 @@
+.filter-form mat-form-field + mat-form-field {
+    margin-left: 8px;
+}
+  
+.filter-form mat-form-field {
+    width: 220px;
+}
+  
+.filter-form form {
+    margin-bottom: 20px;
+}
+  
+.filter-form form > * {
+    margin: 12px 0;
+}
+  
+.filter-form .mat-radio-button {
+    margin: 0 12px;
+}
+  
+.filter-btn{
+    float:right;
+}

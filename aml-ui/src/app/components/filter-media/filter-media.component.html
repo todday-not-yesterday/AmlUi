@@ -1,32 +1,30 @@
-<form [formGroup]="filtersForm">
-  <mat-form-field>
-    <mat-label>Media Type</mat-label>
-    <mat-select formControlName="mediaTypeFormControl" multiple>
-      @for (mediaType of mediaTypes; track mediaType) {
-      <mat-option [value]="mediaType.key">{{ mediaType.name }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+<div class="filter-form">
+  <form [formGroup]="filtersForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput formControlName="searchItemControl" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Branch</mat-label>
-    <mat-select formControlName="branchFromControl" multiple>
-      @for (branch of branches; track branch) {
-      <mat-option [value]="branch.key">{{ branch.name }}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Media Type</mat-label>
+      <mat-select formControlName="mediaTypeFormControl" multiple>
+        @for (mediaType of mediaTypes; track mediaType) {
+        <mat-option [value]="mediaType.key">{{ mediaType.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-  <!-- Need to just take year in -->
-  <mat-form-field>
-    <mat-label>Publication Year Range</mat-label>
-    <mat-date-range-input [rangePicker]="picker">
-      <input matStartDate placeholder="Start date" />
-      <input matEndDate placeholder="End date" />
-    </mat-date-range-input>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Branch</mat-label>
+      <mat-select formControlName="branchFromControl" multiple>
+        @for (branch of branches; track branch) {
+        <mat-option [value]="branch.key">{{ branch.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-  <button mat-flat-button (click)="filter()">Filter</button>
-</form>
+    <button class="filter-btn" mat-stroked-button (click)="filter()">
+      Filter
+    </button>
+  </form>
+</div>
