@@ -28,7 +28,6 @@ export class AppComponent {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   }
   login() {
-    this.isLoggedIn = true;
     console.log(this.isLoggedIn);
     localStorage.setItem('isLoggedIn', 'true');
     this.router.navigate(['/media-return']);
