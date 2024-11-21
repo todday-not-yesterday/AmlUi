@@ -1,0 +1,137 @@
+<a>
+  <h1 class="Title" >Media Return</h1>
+  <br><br>
+
+    <details class="FiltersDropdown" style="width: 100%; margin: 20px auto; font-family: Arial, sans-serif;">
+        <summary style="cursor: pointer; font-size: 18px; font-weight: bold; padding: 10px; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 5px;">
+            Filters
+        </summary>
+        <div style="padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f0f0f0; margin-top: 10px;">
+            <div style="margin-bottom: 15px;">
+                <label for="filter-name" style="display: block; font-weight: bold; margin-bottom: 5px;">Name:</label>
+                <input type="text" id="filter-name" name="filter-name" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <span style="font-weight: bold; display: block; margin-bottom: 5px;">Available:</span>
+                <label>
+                    <input type="radio" name="available" value="yes"> Yes
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="available" value="no"> No
+                </label>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <span style="font-weight: bold; display: block; margin-bottom: 5px;">Media Type:</span>
+                <label>
+                    <input type="radio" name="media-type" value="book"> Book
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="media-type" value="journal"> Journal
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="media-type" value="periodical"> Periodical
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="media-type" value="multimedia-game"> MultiMedia Game
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="media-type" value="e-book"> E-Book
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="media-type" value="cd-dvd"> CD/DVD
+                </label>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <span style="font-weight: bold; display: block; margin-bottom: 5px;">Status:</span>
+                <label>
+                    <input type="radio" name="status" value="borrowed"> Borrowed
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="status" value="expired"> Expired
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="status" value="return-pending"> Return-Pending
+                </label>
+                <label style="margin-left: 10px;">
+                    <input type="radio" name="status" value="returned"> Returned
+                </label>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="filter-location" style="display: block; font-weight: bold; margin-bottom: 5px;">Location:</label>
+                <select id="filter-location" name="filter-location" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="">Select a location</option>
+                    <option value="Sheffield">Sheffield</option>
+                    <option value="Birmingham">Birmingham</option>
+                    <option value="London">London</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="filter-year" style="display: block; font-weight: bold; margin-bottom: 5px;">Publication Year:</label>
+                <input type="text" id="filter-year" name="filter-year" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
+            </div>
+
+            <div style="text-align: right;">
+                <button type="button" style="padding: 10px 20px; background-color: #618559; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+    </details>
+
+
+    <br><br>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name of Media</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Author">
+      <th mat-header-cell *matHeaderCellDef>Author</th>
+      <td mat-cell *matCellDef="let element">{{ element.author }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Publication Year">
+      <th mat-header-cell *matHeaderCellDef>Publication Year</th>
+      <td mat-cell *matCellDef="let element">{{ element.publicationYear }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Available">
+      <th mat-header-cell *matHeaderCellDef>Available</th>
+      <td mat-cell *matCellDef="let element">{{ element.available }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Media Type">
+      <th mat-header-cell *matHeaderCellDef>Media Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.mediaType }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Branch">
+      <th mat-header-cell *matHeaderCellDef>Branch</th>
+      <td mat-cell *matCellDef="let element">{{ element.branchName }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div>
+    <mat-paginator
+      #paginator
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 20]"
+      [length]="mediaCount"
+      [showFirstLastButtons]="true"
+      (page)="pageChanged($event)"
+    >
+    </mat-paginator>
+  </div>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</a>
