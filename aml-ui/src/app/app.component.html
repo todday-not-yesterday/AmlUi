@@ -1,2 +1,8 @@
-<!-- Needs adding login component here and possibly directing to the below component after successful login -->
-<app-side-bar></app-side-bar>
+<div *ngIf="isLoggedIn">
+  <app-side-bar></app-side-bar>
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="!isLoggedIn">
+  <Login></Login>
+</div>
