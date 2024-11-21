@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {RouterLink, RouterModule} from "@angular/router";
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
+import { SideBarComponent } from "./components/side-bar/side-bar.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatButtonModule, MatSidenavModule, RouterLink, RouterModule, MatIconModule, MatListModule],
+  imports: [SideBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

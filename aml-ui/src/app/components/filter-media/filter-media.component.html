@@ -1,0 +1,30 @@
+<div class="filter-form">
+  <form [formGroup]="filtersForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput formControlName="searchItemControl" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Media Type</mat-label>
+      <mat-select formControlName="mediaTypeFormControl" multiple>
+        @for (mediaType of mediaTypes; track mediaType) {
+        <mat-option [value]="mediaType.key">{{ mediaType.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Branch</mat-label>
+      <mat-select formControlName="branchFromControl" multiple>
+        @for (branch of branches; track branch) {
+        <mat-option [value]="branch.key">{{ branch.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <button class="filter-btn" mat-stroked-button (click)="filter()">
+      Filter
+    </button>
+  </form>
+</div>
