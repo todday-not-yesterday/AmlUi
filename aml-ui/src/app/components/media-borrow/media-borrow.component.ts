@@ -6,14 +6,13 @@ import { Filters } from '../../shared/filters';
 import { MatPaginator, PageEvent } from "@angular/material/paginator";
 import { FilterMediaComponent } from "../filter-media/filter-media.component";
 import { MediaEnquiryType } from '../../enums/media-enquiry-type.enum';
-import { CommonModule } from '@angular/common'; 
 import { MatDialog } from '@angular/material/dialog';
 import { MediaBorrowDialogComponent } from '../media-borrow-dialog/media-borrow-dialog.component';
 
 @Component({
   selector: 'app-media-borrow',
   standalone: true,
-  imports: [MatTableModule, MatPaginator, FilterMediaComponent, CommonModule],
+  imports: [MatTableModule, MatPaginator, FilterMediaComponent],
   templateUrl: './media-borrow.component.html',
   styleUrl: './media-borrow.component.scss'
 })

@@ -7,5 +7,5 @@ export interface Filters{
     userKey?: number;
     mediaTypes?: number[];
     branches?: number[];
-    mediaEnquiryType: MediaEnquiryType;
+    mediaEnquiryType?: MediaEnquiryType;
 }
