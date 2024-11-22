@@ -15,4 +15,9 @@ import {MatListModule} from '@angular/material/list';
 })
 export class SideBarComponent {
 
+  logout() {
+    localStorage.setItem('isLoggedIn', 'false');
+    console.log('User logged out');
+    location.reload();
+  }
 }

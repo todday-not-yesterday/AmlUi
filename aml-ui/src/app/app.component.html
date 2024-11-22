@@ -4,5 +4,12 @@
 </div>
 
 <div *ngIf="!isLoggedIn">
-  <Login></Login>
+  <div>
+    <ng-container *ngIf="showLogin; else registrationTemplate">
+      <Login (switchToRegister)="toggleLogin()"></Login>
+    </ng-container>
+    <ng-template #registrationTemplate>
+      <RegistrationComponent (switchToLogin)="toggleLogin()"></RegistrationComponent>
+    </ng-template>
+  </div>
 </div>
