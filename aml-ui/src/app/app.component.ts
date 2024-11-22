@@ -5,7 +5,9 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import {Login} from './components/Login/Login.component';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';  // Import CommonModule
+import { CommonModule } from '@angular/common';
+import {RegistrationComponent} from './components/Registration/Registration.component';
+
 
 @Component({
   selector: 'app-root',
@@ -16,12 +18,14 @@ import { CommonModule } from '@angular/common';  // Import CommonModule
     MatSidenavModule,
     MatListModule,
     RouterModule,
-    Login
+    Login,
+    RegistrationComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  showLogin: boolean = true
   isLoggedIn: boolean = false;
   constructor(private router: Router) {}
   ngOnInit() {
@@ -32,4 +36,8 @@ export class AppComponent {
     localStorage.setItem('isLoggedIn', 'true');
     this.router.navigate(['/media-return']);
   }
+  toggleLogin() {
+    this.showLogin = !this.showLogin;
+  }
+
 }

@@ -39,9 +39,11 @@
     <button type="button" mat-button (click)="sidenav.toggle()">
       <i class="material-icons">menu</i>
     </button>
-    <span style="display: flex; align-items: center; font-weight: 600; padding-right: 60px;">
-      <i class="material-icons" style="margin-right: 8px; margin-bottom: 8px;">account_circle</i> User342943534
-  </span>
+    <button
+      style="display: flex; align-items: center; font-weight: 600; padding-right: 10px; height: 48px"
+      (click)="logout()">
+      <i class="material-icons" style="margin-right: 8px;">account_circle</i>Logout
+    </button>
   </div>
 
 
