@@ -1,4 +1,118 @@
-body{
-  background-color: dimgrey;
-  height: 500px;
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #81B076;
+}
+
+h2{
+  color: #81B076;
+  font-size: 50px;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  flex: 0 0 30%;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.form-group-checkbox label {
+  line-height: 1.5;
+  color: #333;
+}
+
+.form-group textarea {
+  flex: 1;
+  width: calc(100% - 30px);
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  line-height: 1.5;
+  resize: none;
+}
+
+.form-container {
+  position: relative;
+  background-color: white;
+  width: 40%;
+  padding: 20px;
+  text-align: left;
+  border: 2px solid white;
+  border-radius: 5px;
+  height: 80vh;
+  box-sizing: border-box;
+}
+
+.form-group input {
+  width: calc(100% - 30px);
+}
+
+.form-button {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.ButtonLeft {
+  width: 150px;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+  background-color: #739D69;
+  border: 1px #739D69;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.ButtonRight {
+  width: 150px;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+  background-color: #739D69;
+  border: 1px #739D69;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.Button:hover {
+  color: white;
+  background-color: #618559;
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition-duration: 0.3s;
+}
+.form-group-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.form-group-checkbox input[type="checkbox"] {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
