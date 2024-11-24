@@ -1,0 +1,38 @@
+.inventory-layout {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 30px;
+}
+
+.filter-section {
+  flex: 1 1 200px;
+  min-width: 250px;
+}
+
+.table-section {
+  flex: 3 1 600px;
+  min-width: 600px;
+}
+
+.Title{
+  text-align: center;
+  color: #81B076;
+  font-size: 50px;
+  margin-top: 0;
+}
+//.Filters-Title{
+//  text-align: center;
+//  background-color: darkgrey;
+//  font-weight: bold;
+//  font-size: 30px;
+//  padding: 15px;
+//  border-radius: 25px;
+//}
+//.FiltersTable{
+//  text-align: center;
+//  color: black;
+//  background-color: lightgrey;
+//  font-weight: bold;
+//  width: 100%;
+//  border-radius: 25px;
+//}
