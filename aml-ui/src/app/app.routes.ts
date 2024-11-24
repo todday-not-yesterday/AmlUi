@@ -3,6 +3,7 @@ import {MediaReturnComponent} from './components/Media-Return/Media-Return.compo
 import {MediaBorrowComponent} from './components/media-borrow/media-borrow.component';
 import {Login} from './components/Login/Login.component';
 import {RegistrationComponent} from './components/Registration/Registration.component';
+import {ManageInventoryComponent} from './components/manage-inventory/manage-inventory.component';
 
 export const routes: Routes = [
     {path: 'Media-Return', component: MediaReturnComponent},
@@ -11,4 +12,6 @@ export const routes: Routes = [
     {path: 'Login', component: Login},
     { path: '', redirectTo: '/Login', pathMatch: 'full' },
     //Add a page not found component maybe ?{ path: '**', component: PageNotFoundComponent },
+    {path: 'Login', component: Login},
+    {path: 'manage-inventory', component: ManageInventoryComponent},
 ];
