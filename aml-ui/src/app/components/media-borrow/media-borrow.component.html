@@ -40,6 +40,7 @@
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let element">
       <button
+        class="borrow-button"
         mat-stroked-button
         [disabled]="!element.available"
         (click)="borrowMedia()"

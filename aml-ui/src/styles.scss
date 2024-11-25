@@ -3,3 +3,12 @@
 @import '@angular/cdk/overlay-prebuilt.css';
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "@angular/material/prebuilt-themes/azure-blue.css";
+
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}
