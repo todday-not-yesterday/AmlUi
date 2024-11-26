@@ -1,13 +1,16 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'Login',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
   templateUrl: './Login.component.html',
-  styleUrl: './Login.component.scss'
+  styleUrls: ['./Login.component.scss']
 })
 export class Login {
   username: string = '';
@@ -15,17 +18,30 @@ export class Login {
 
   @Output() switchToRegister = new EventEmitter<void>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   login() {
-    if (this.username === 'user' && this.password === 'password') {
-      localStorage.setItem('isLoggedIn', 'true');
-      this.router.navigate(['/']);
+    this.loginApiRequest();
+  }
 
-      location.reload();
-    } else {
-      localStorage.setItem('isLoggedIn', 'false');
-      alert('Invalid login credentials');
-    }
+  loginApiRequest() {
+    const url = `http://localhost:35014/User/Login?username=${encodeURIComponent(this.username)}&password=${encodeURIComponent(this.password)}`;
+
+    this.http.get<boolean>(url).pipe(
+      catchError(err => {
+        console.error('Login error:', err);
+        alert('An error occurred while logging in.');
+        return of(false);
+      })
+    ).subscribe(result => {
+      if (result) {
+        localStorage.setItem('isLoggedIn', 'true');
+        this.router.navigate(['/']);
+        location.reload();
+      } else {
+        localStorage.setItem('isLoggedIn', 'false');
+        alert('Invalid login credentials');
+      }
+    });
   }
 }
