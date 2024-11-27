@@ -1,1 +1,27 @@
-<p>media-borrow-dialog works!</p>
+<h2 mat-dialog-title>Are you sure you want to borrow:</h2>
+<mat-dialog-content class="container">
+  <h3>
+    The {{ mediaType }} <span class="green">{{ mediaName }}</span>
+  </h3>
+
+  <h4>Collection Type:</h4>
+  <mat-checkbox
+    [checked]="collection"
+    (change)="collection = true; delivery = false"
+    >Collect in store</mat-checkbox
+  >
+  <mat-checkbox
+    [checked]="delivery"
+    (change)="delivery = true; collection = false"
+    >Deliver to me</mat-checkbox
+  >
+  <p class="collection-confirm" [hidden]="!confirmTypeRequired">
+    Please select a collection type
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="no-button" mat-button (click)="onNoClick()">No</button>
+  <button class="borrow-button" mat-button cdkFocusInitial (click)="borrow()">
+    Borrow
+  </button>
+</mat-dialog-actions>
