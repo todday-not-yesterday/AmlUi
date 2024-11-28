@@ -8,6 +8,8 @@ import { FilterMediaComponent } from "../filter-media/filter-media.component";
 import { MediaEnquiryType } from '../../enums/media-enquiry-type.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaBorrowDialogComponent } from '../media-borrow-dialog/media-borrow-dialog.component';
+import { BorrowMediaResponse } from '../../shared/borrow-media-response';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-media-borrow',
@@ -18,6 +20,8 @@ import { MediaBorrowDialogComponent } from '../media-borrow-dialog/media-borrow-
 })
 
 export class MediaBorrowComponent implements OnInit{
+  private _snackBar = inject(MatSnackBar);
+
   displayedColumns: string[] = ['Name', 'Author', 'Publication Year', 'Available', 'Media Type', 'Branch', 'Action'];
   dataSource = new MatTableDataSource<Media>();
   @ViewChild(MatPaginator, {static:false}) set paginator(paginator: MatPaginator) {
@@ -65,13 +69,18 @@ export class MediaBorrowComponent implements OnInit{
     this.GetData(this.filters);
   }
 
-  borrowMedia(){
-  const dialogRef = this.dialog.open(MediaBorrowDialogComponent, {
-  });
-  dialogRef.afterClosed().subscribe((result: boolean) => {
-    if (result) {
-      // show message saying media has been borrowed
-    }
-  });
+  borrowMedia(element:Media){
+    const dialogRef = this.dialog.open(MediaBorrowDialogComponent, {
+      data: {mediaKey: element.key, mediaName: element.name, mediaType: element.mediaType, userKey:4}
+    });
+    dialogRef.afterClosed().subscribe((result: BorrowMediaResponse) => {
+      if (result.success) {
+        this._snackBar.open(result.message, "OK", {
+          verticalPosition: 'top',
+          panelClass: 'success-snackbar',
+          duration: 2000
+        });
+      }
+    });
 }
 }

@@ -1,67 +1,67 @@
 <body>
-    <div class="form-container">
-        <h2>Register</h2>
-        <form action="/submit_registration" method="POST">
-            <div class="form-group">
-                <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first_name" placeholder="FirstName" required>
-            </div>
-            <div class="form-group">
-                <label for="second-name">Second Name:</label>
-                <input type="text" id="second-name" name="second_name" placeholder="SecondName" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <textarea type="text" id="address" name="address" placeholder="Address" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="postcode">Postcode:</label>
-                <input type="text" id="postcode" name="postcode" placeholder="PostCode" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-email">Re-enter Email:</label>
-                <input type="email" id="confirm-email" name="confirm_email" placeholder="Confirm Email" required>
-            </div>
-            <div class="form-group">
-                <label for="birth-date">Birth Date:</label>
-                <input type="date" id="birth-date" name="birth_date" placeholder="DD/MM/YY" required>
-            </div>
-            <div class="form-group">
-                <label for="contact-number">Contact Number:</label>
-                <input type="tel" id="contact-number" name="contact_number" placeholder="PhoneNumber" required>
-            </div>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm-password">Re-enter Password:</label>
-                <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required>
-            </div>
-            <div class="form-group-checkbox">
-                <input type="checkbox" id="exclusive-insights" name="exclusive_insights">
-                <label for="exclusive-insights">
-                    I would like to sign up to gain access to exclusive insights from AML
-                </label>
-            </div>
-            <div class="form-group-checkbox">
-                <input type="checkbox" id="terms-conditions" name="terms_conditions" required>
-                <label for="terms-conditions">
-                    I Agree to AML’s Terms and Conditions<span style="color: red;">*</span>
-                </label>
-            </div>
-            <div class="form-button">
-                <button class="ButtonLeft" type="submit">Register</button>
-                <button class="ButtonRight" (click)="switchToLogin.emit()">Cancel</button>
-            </div>
-        </form>
+<div class="form-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="register()">
+    <div class="form-group">
+      <label for="first-name">First Name:</label>
+      <input type="text" id="first-name" name="first_name" [(ngModel)]="firstName" placeholder="FirstName" required>
     </div>
+    <div class="form-group">
+      <label for="second-name">Second Name:</label>
+      <input type="text" id="second-name" name="second_name" [(ngModel)]="secondName" placeholder="SecondName" required>
+    </div>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" [(ngModel)]="address" placeholder="Address" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="postcode">Postcode:</label>
+      <input type="text" id="postcode" name="postcode" [(ngModel)]="postcode" placeholder="PostCode" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <label for="confirmEmail">Confirm Email:</label>
+      <input type="confirmEmail" id="confirmEmail" name="confirmEmail" [(ngModel)]="confirmEmail" placeholder="Confirm Email" required>
+    </div>
+    <div class="form-group">
+      <label for="birth-date">Birth Date:</label>
+      <input type="date" id="birth-date" name="birth_date" [(ngModel)]="birthDate" placeholder="DD/MM/YY" required>
+    </div>
+    <div class="form-group">
+      <label for="contact-number">Contact Number:</label>
+      <input type="tel" id="contact-number" name="contact_number" [(ngModel)]="contactNumber" placeholder="PhoneNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" placeholder="Username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="confirmPassword" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="Confirm Password" required>
+    </div>
+    <div class="form-group-checkbox">
+      <input type="checkbox" id="exclusive-insights" name="exclusive_insights" [(ngModel)]="exclusiveInsights">
+      <label for="exclusive-insights">
+        I would like to sign up to gain access to exclusive insights from AML
+      </label>
+    </div>
+    <div class="form-group-checkbox">
+      <input type="checkbox" id="terms-conditions" name="terms_conditions" [(ngModel)]="termsConditions" required>
+      <label for="terms-conditions">
+        I Agree to AML’s Terms and Conditions<span style="color: red;">*</span>
+      </label>
+    </div>
+    <div class="form-button">
+      <button class="ButtonLeft" type="submit">Register</button>
+      <button class="ButtonRight" (click)="switchToLogin.emit()">Cancel</button>
+    </div>
+  </form>
+</div>
 </body>

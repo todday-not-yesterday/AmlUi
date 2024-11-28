@@ -6,6 +6,7 @@ import { GetMediaResponse } from "../shared/get-media-response";
 import { MediaType } from "../shared/media-type";
 import { Branch } from "../shared/branch";
 import {TransferData} from '../shared/transferData';
+import { BorrowMediaResponse } from "../shared/borrow-media-response";
 
 @Injectable({
     providedIn: 'root',
@@ -37,5 +38,10 @@ export class AmlApiService {
     const url = `${this.amlApi}/Inventory/TransferMedia`;
     console.log("url", url);
     return this.httpClient.post<TransferData[]>(url, transferData);
+  }
+
+  borrowMedia(mediaKey: number, userKey: number) : Observable<BorrowMediaResponse>{
+      const url = `${this.amlApi}/Media/BorrowMedia/${mediaKey}/${userKey}`;
+      return this.httpClient.post<BorrowMediaResponse>(url, null);
   }
 }
