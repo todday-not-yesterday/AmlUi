@@ -1,5 +1,5 @@
-﻿export interface Transfer{
-  invKey: number;
+﻿export interface TransferData {
+  key: number;
   branch: number;
   stockLevel: number;
 }

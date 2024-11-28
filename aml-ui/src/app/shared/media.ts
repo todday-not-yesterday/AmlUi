@@ -5,5 +5,6 @@ export interface Media {
     mediaType: string;
     available: boolean;
     branchName: string;
-    StockLevel: number;
+    stockLevel: number;
+    key: number;
 }

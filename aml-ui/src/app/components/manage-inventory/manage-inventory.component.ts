@@ -7,6 +7,9 @@ import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {FilterMediaComponent} from '../filter-media/filter-media.component';
 import {MediaEnquiryType} from '../../enums/media-enquiry-type.enum';
 import {MatDialog} from '@angular/material/dialog';
+import {MediaBorrowDialogComponent} from '../media-borrow-dialog/media-borrow-dialog.component';
+import {TransferMediaDialogComponent} from '../transfer-media-dialog/transfer-media-dialog.component';
+import {Branch} from '../../shared/branch';
 
 @Component({
   selector: 'app-manage-inventory',
@@ -20,7 +23,7 @@ export class ManageInventoryComponent implements OnInit{
     this.dataSource.paginator = paginator;
   }
 
-  displayedColumns: string[] = ['Name', 'Author', 'Publication Year', 'Stock Level', 'Media Type', 'Branch'];
+  displayedColumns: string[] = ['Name', 'Author', 'Publication Year', 'Stock Level', 'Media Type', 'Branch', 'Action'];
   dataSource = new MatTableDataSource<Media>();
 
   pageNumber: number = 1;
@@ -33,8 +36,12 @@ export class ManageInventoryComponent implements OnInit{
   filters: Filters = {
     pageNumber: this.pageNumber,
     pageSize: this.pageSize,
-    mediaEnquiryType: this.mediaEnquiryType
+    mediaEnquiryType: this.mediaEnquiryType,
+    branches: [],
+    mediaTypes: []
   };
+
+  branches: Branch[];
 
   constructor(private amlApiService: AmlApiService) { }
 
@@ -42,6 +49,12 @@ export class ManageInventoryComponent implements OnInit{
     console.log("filters oninit inventory", this.filters);
     this.GetData(this.filters);
     this.dataSource.paginator = this.paginator;
+
+    this.amlApiService.getBranches().subscribe({
+      next: (success) => {
+        this.branches = success;
+      }
+    });
   }
 
   // GetData(){
@@ -60,12 +73,22 @@ export class ManageInventoryComponent implements OnInit{
   // }
 
   GetData(filters: Filters){
-    console.log("filters at inventory", filters);
     this.amlApiService.getFilteredMedia(filters).subscribe({
       next: (success) => {
-        console.log("i got here");
         this.dataSource = new MatTableDataSource<Media>(success.mediaResources);
         this.mediaCount = success.mediaCount;
+      }
+    });
+  }
+
+  TransferMedia(mediaData: Media) {
+    const dialogRef = this.dialog.open(TransferMediaDialogComponent, {
+      data: {
+        Media: mediaData,
+        branches: this.branches}});
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        // show message saying media has been transferred
       }
     });
   }
@@ -73,15 +96,12 @@ export class ManageInventoryComponent implements OnInit{
   updateFilters(newFilters: Filters){
     newFilters.pageSize = this.filters.pageSize;
     this.filters = newFilters;
-    console.log("Filters at inventory", this.filters);
     this.GetData(this.filters);
   }
 
   pageChanged (pageEvent: PageEvent): void {
-    console.log("Filters at inventory", this.filters);
     this.pageNumber = pageEvent.pageIndex + 1;
     this.pageSize = pageEvent.pageSize;
     this.GetData(this.filters);
   }
-
 }
