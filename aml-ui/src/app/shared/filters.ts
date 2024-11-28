@@ -8,6 +8,6 @@ export interface Filters{
     mediaTypes?: number[];
     branches?: number[];
     mediaEnquiryType?: MediaEnquiryType;
-    publicationYear?: string;
+    publicationYear?: number;
     available?: boolean;
 }

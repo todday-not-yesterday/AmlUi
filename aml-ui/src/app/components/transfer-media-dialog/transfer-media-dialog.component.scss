@@ -1,0 +1,52 @@
+.transferDialogContainer{
+  height: 500px;
+  width: 500px;
+}
+
+.Title{
+  text-align: center;
+  color: #81B076;
+  font-size: 30px;
+  margin-top: 0;
+}
+
+.transfer-dialog-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 8px 12px;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color: #00ff04;
+  border-color: #00ff04;
+}
+
+.btn-secondary {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+

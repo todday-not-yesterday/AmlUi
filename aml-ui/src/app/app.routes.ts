@@ -12,6 +12,5 @@ export const routes: Routes = [
     {path: 'Login', component: Login},
     { path: '', redirectTo: '/Login', pathMatch: 'full' },
     //Add a page not found component maybe ?{ path: '**', component: PageNotFoundComponent },
-    {path: 'Login', component: Login},
     {path: 'manage-inventory', component: ManageInventoryComponent},
 ];
