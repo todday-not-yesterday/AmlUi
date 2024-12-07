@@ -1,0 +1,40 @@
+.container{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.Title{
+  text-align: center;
+  color: #81B076;
+  font-size: 50px;
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  align-content: center;
+}
+
+th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f0f0f0;
+}
