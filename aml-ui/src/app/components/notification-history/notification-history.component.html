@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="Title">Notifications History</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Notification Type</th>
+      <th>Notification Send Type</th>
+      <th>Notification Status</th>
+      <th>Added Date</th>
+      <th>Send At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let notification of notifications">
+      <td>{{ notification.notificationType }}</td>
+      <td>{{ notification.notificationSendType }}</td>
+      <td>{{ notification.notificationStatus }}</td>
+      <td>{{ notification.addedDate }}</td>
+      <td>{{ notification.sendAt }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

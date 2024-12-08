@@ -57,21 +57,6 @@ export class ManageInventoryComponent implements OnInit{
     });
   }
 
-  // GetData(){
-  //   let filters: Filters = {
-  //     pageNumber: this.pageNumber,
-  //     pageSize: this.pageSize,
-  //     mediaEnquiryType: MediaEnquiryType.manageInventory
-  //   }
-  //
-  //   this.amlApiService.getFilteredMedia(filters).subscribe({
-  //     next: (success) => {
-  //       this.dataSource = new MatTableDataSource<Media>(success.mediaResources);
-  //       this.mediaCount = success.mediaCount;
-  //     }
-  //   });
-  // }
-
   GetData(filters: Filters){
     this.amlApiService.getFilteredMedia(filters).subscribe({
       next: (success) => {
