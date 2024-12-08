@@ -1,143 +1,62 @@
-<a>
-  <h1 class="Title" >Media Return</h1>
-  <br><br>
+<div class="inventory-layout">
+  <h1 class="Title">Media Return</h1>
 
-    <details class="FiltersDropdown" style="width: 100%; margin: 20px auto; font-family: Arial, sans-serif;">
-        <summary style="cursor: pointer; font-size: 18px; font-weight: bold; padding: 10px; background-color: #f0f0f0; border: 1px solid #ccc; border-radius: 5px;">
-            Filters
-        </summary>
-        <div style="padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f0f0f0; margin-top: 10px;">
-            <div style="margin-bottom: 15px;">
-                <label for="filter-name" style="display: block; font-weight: bold; margin-bottom: 5px;">Name:</label>
-                <input type="text" id="filter-name" name="filter-name" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-            </div>
+  <app-filter-media
+    [mediaEnquiryType]="mediaEnquiryType"
+    (filtersEvent)="updateFilters($event)"
+  ></app-filter-media>
 
-            <div style="margin-bottom: 15px;">
-                <span style="font-weight: bold; display: block; margin-bottom: 5px;">Available:</span>
-                <label>
-                    <input type="radio" name="available" value="yes"> Yes
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="available" value="no"> No
-                </label>
-            </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef>Name of Media</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
 
-            <div style="margin-bottom: 15px;">
-                <span style="font-weight: bold; display: block; margin-bottom: 5px;">Media Type:</span>
-                <label>
-                    <input type="radio" name="media-type" value="book"> Book
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="media-type" value="journal"> Journal
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="media-type" value="periodical"> Periodical
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="media-type" value="multimedia-game"> MultiMedia Game
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="media-type" value="e-book"> E-Book
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="media-type" value="cd-dvd"> CD/DVD
-                </label>
-            </div>
+    <ng-container matColumnDef="Author">
+      <th mat-header-cell *matHeaderCellDef>Author</th>
+      <td mat-cell *matCellDef="let element">{{ element.author }}</td>
+    </ng-container>
 
-            <div style="margin-bottom: 15px;">
-                <span style="font-weight: bold; display: block; margin-bottom: 5px;">Status:</span>
-                <label>
-                    <input type="radio" name="status" value="borrowed"> Borrowed
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="status" value="expired"> Expired
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="status" value="return-pending"> Return-Pending
-                </label>
-                <label style="margin-left: 10px;">
-                    <input type="radio" name="status" value="returned"> Returned
-                </label>
-            </div>
+    <ng-container matColumnDef="Publication Year">
+      <th mat-header-cell *matHeaderCellDef>Publication Year</th>
+      <td mat-cell *matCellDef="let element">{{ element.publicationYear }}</td>
+    </ng-container>
 
-            <div style="margin-bottom: 15px;">
-                <label for="filter-location" style="display: block; font-weight: bold; margin-bottom: 5px;">Location:</label>
-                <select id="filter-location" name="filter-location" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-                    <option value="">Select a location</option>
-                    <option value="Sheffield">Sheffield</option>
-                    <option value="Birmingham">Birmingham</option>
-                    <option value="London">London</option>
-                </select>
-            </div>
+    <ng-container matColumnDef="Stock Level">
+      <th mat-header-cell *matHeaderCellDef>Stock Level</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.stockLevel}}
+      </td>
+    </ng-container>
 
-            <div style="margin-bottom: 15px;">
-                <label for="filter-year" style="display: block; font-weight: bold; margin-bottom: 5px;">Publication Year:</label>
-                <input type="text" id="filter-year" name="filter-year" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px;">
-            </div>
+    <ng-container matColumnDef="Media Type">
+      <th mat-header-cell *matHeaderCellDef>Media Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.mediaType }}</td>
+    </ng-container>
 
-            <div style="text-align: right;">
-                <button type="button" style="padding: 10px 20px; background-color: #618559; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
-                    Apply Filters
-                </button>
-            </div>
-        </div>
-    </details>
+    <ng-container matColumnDef="Branch">
+      <th mat-header-cell *matHeaderCellDef>Branch</th>
+      <td mat-cell *matCellDef="let element">{{ element.branchName }}</td>
+    </ng-container>
 
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-stroked-button
+          [disabled]="!element.available"
+          class="ReturnButton"
+          (click)="onReturnClick()">
+          Return
+        </button>
+      </td>
+    </ng-container>
 
-    <br><br>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!-- Existing columns -->
-        <ng-container matColumnDef="Name">
-            <th mat-header-cell *matHeaderCellDef>Name of Media</th>
-            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-        </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 
-        <ng-container matColumnDef="Author">
-            <th mat-header-cell *matHeaderCellDef>Author</th>
-            <td mat-cell *matCellDef="let element">{{ element.author }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Publication Year">
-            <th mat-header-cell *matHeaderCellDef>Publication Year</th>
-            <td mat-cell *matCellDef="let element">{{ element.publicationYear }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Available">
-            <th mat-header-cell *matHeaderCellDef>Available</th>
-            <td mat-cell *matCellDef="let element">{{ element.available }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Media Type">
-            <th mat-header-cell *matHeaderCellDef>Media Type</th>
-            <td mat-cell *matCellDef="let element">{{ element.mediaType }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="Branch">
-            <th mat-header-cell *matHeaderCellDef>Branch</th>
-            <td mat-cell *matCellDef="let element">{{ element.branchName }}</td>
-        </ng-container>
-
-        <!-- New 'Status' Column -->
-        <ng-container matColumnDef="Status">
-            <th mat-header-cell *matHeaderCellDef>Status</th>
-            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-        </ng-container>
-
-        <!-- New 'Return' Column with Buttons -->
-        <ng-container matColumnDef="Return">
-            <th mat-header-cell *matHeaderCellDef>Return</th>
-            <td mat-cell *matCellDef="let element">
-                <button mat-button>Return</button>
-            </td>
-        </ng-container>
-
-        <!-- Header and Row Definitions -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-
-
-    <div>
+  <div>
     <mat-paginator
       #paginator
       [pageSize]="pageSize"
@@ -148,7 +67,4 @@
     >
     </mat-paginator>
   </div>
-
-  <br><br><br><br><br><br><br><br><br><br><br><br>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</a>
+</div>

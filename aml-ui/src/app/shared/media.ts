@@ -7,5 +7,4 @@ export interface Media {
     available: boolean;
     branchName: string;
     stockLevel: number;
-    key: number;
 }
