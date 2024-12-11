@@ -4,35 +4,28 @@
     <span style="font-weight: bolder; color: black; font-size: 50px; text-align: center; display: block; padding-top: 150px">AML</span>
 
     <mat-nav-list>
-      <a routerLink="/media-borrow" (click)="sidenav.close()" style="color: black; text-decoration: none;">
+      <a *ngIf="userIsLibraryMember" routerLink="/media-borrow" (click)="sidenav.close()" style="color: black; text-decoration: none;">
         <mat-list-item style="background-color:#618559; border-radius: 10px; margin-top: 5px; margin-bottom: 5px;">
           <i class="material-icons">search</i>
           Media Search
         </mat-list-item>
       </a>
 
-      <a routerLink="/Media-Return" (click)="sidenav.close()" style="color: black; text-decoration: none;">
+      <a *ngIf="userIsLibraryMember" routerLink="/Media-Return" (click)="sidenav.close()" style="color: black; text-decoration: none;">
         <mat-list-item style="background-color:#618559; border-radius: 10px; margin-top: 5px; margin-bottom: 5px;">
           <i class="material-icons" style="padding-right: 20px">loop</i>
           Media Return
         </mat-list-item>
       </a>
 
-      <a routerLink="#" (click)="sidenav.close()" style="color: black; text-decoration: none;">
-        <mat-list-item style="background-color:#618559; border-radius: 10px; margin-top: 5px; margin-bottom: 5px;">
-          <i class="material-icons">person</i>
-          My Profile
-        </mat-list-item>
-      </a>
-
-      <a routerLink="/manage-inventory" (click)="sidenav.close()" style="color: black; text-decoration: none;">
+      <a *ngIf="!userIsLibraryMember" routerLink="/manage-inventory" (click)="sidenav.close()" style="color: black; text-decoration: none;">
         <mat-list-item style="background-color:#618559; border-radius: 10px; margin-top: 5px; margin-bottom: 5px;">
           <i class="material-icons">inventory</i>
           Manage Inventory
         </mat-list-item>
       </a>
 
-      <a routerLink="/notification-history" (click)="sidenav.close()" style="color: black; text-decoration: none;">
+      <a *ngIf="userIsLibraryMember" routerLink="/notification-history" (click)="sidenav.close()" style="color: black; text-decoration: none;">
         <mat-list-item style="background-color:#618559; border-radius: 10px; margin-top: 5px; margin-bottom: 5px;">
           <i class="material-icons">sms</i>
           Notification History

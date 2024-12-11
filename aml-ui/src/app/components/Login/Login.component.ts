@@ -27,7 +27,7 @@ export class Login {
   loginApiRequest() {
     const url = `http://localhost:35014/User/Login?username=${encodeURIComponent(this.username)}&password=${encodeURIComponent(this.password)}`;
 
-    this.http.get<boolean>(url).pipe(
+    this.http.get<number>(url).pipe(
       catchError(err => {
         console.error('Login error:', err);
         alert('An error occurred while logging in.');
@@ -36,6 +36,7 @@ export class Login {
     ).subscribe(result => {
       if (result) {
         localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('currentUserKey', `${result}`);
         this.router.navigate(['/']);
         location.reload();
       } else {

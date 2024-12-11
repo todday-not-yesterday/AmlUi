@@ -49,4 +49,9 @@ export class AmlApiService {
     const url = `${this.amlApi}/Notifications/GetNotificationsForUser/${userKey}`;
     return this.httpClient.post <Notification[]>(url, null);
   }
+
+  userIsLibraryMemeber(userKey: number) : Observable<boolean> {
+    const url = `${this.amlApi}/User/UserIsLibraryMember/${userKey}`;
+    return this.httpClient.get <boolean>(url);
+  }
 }
