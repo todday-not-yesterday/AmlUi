@@ -80,6 +80,9 @@ export class MediaBorrowComponent implements OnInit{
           panelClass: 'success-snackbar',
           duration: 2000
         });
+        if(this.filters){
+          this.GetData(this.filters);
+        }
       }
     });
 }

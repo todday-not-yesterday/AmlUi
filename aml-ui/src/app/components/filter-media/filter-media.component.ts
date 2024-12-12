@@ -118,6 +118,7 @@ export class FilterMediaComponent implements OnInit{
     this.filters.available = this.filtersForm.controls.availableControl.value;
     this.filters.mediaTypes = this.selectedMediaTypes;
     this.filters.branches = this.selectedBranches;
+    this.filters.userKey = Number(localStorage.getItem("currentUserKey"));
     console.log("filters at filter:", this.filters);
     this.filtersEvent.emit(this.filters);
   }
