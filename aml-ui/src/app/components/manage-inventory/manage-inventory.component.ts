@@ -72,9 +72,7 @@ export class ManageInventoryComponent implements OnInit{
         Media: mediaData,
         branches: this.branches}});
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
-        // show message saying media has been transferred
-      }
+      location.reload()
     });
   }
 

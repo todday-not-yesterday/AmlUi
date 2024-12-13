@@ -16,6 +16,7 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {AmlApiService} from '../../services/aml-api.service';
 import {TransferData} from '../../shared/transferData';
 import {Branch} from '../../shared/branch';
+import {MatCheckbox} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-transfer-media-dialog',
@@ -31,7 +32,8 @@ import {Branch} from '../../shared/branch';
     MatDialogActions,
     MatInput,
     NgMultiSelectDropDownModule,
-    NgForOf
+    NgForOf,
+    MatCheckbox
   ],
   templateUrl: './transfer-media-dialog.component.html',
   styleUrl: './transfer-media-dialog.component.scss'
