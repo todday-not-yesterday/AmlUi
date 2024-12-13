@@ -83,6 +83,7 @@ export class MediaReturnComponent implements OnInit{
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
+    this.GetData(this.filters);
   }
 
   updateFilters(newFilters: Filters){
