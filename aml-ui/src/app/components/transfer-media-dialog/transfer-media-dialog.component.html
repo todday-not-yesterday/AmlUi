@@ -1,5 +1,6 @@
-<h2 mat-dialog-title>Are you sure you want to transfer:</h2>
-<mat-dialog-content class="container">
+<form [formGroup]="transferForm">
+  <h2 mat-dialog-title>Are you sure you want to transfer:</h2>
+  <mat-dialog-content class="container">
     <div class="form-group mb-3">
       <label for="quantity" class="form-label">Amount Of Stock To Transfer</label>
       <input id="quantity" type="number" class="form-control" formControlName="quantityControl" placeholder="Enter Quantity">
@@ -11,10 +12,11 @@
         <option *ngFor="let branch of branches" [value]="branch.key">{{branch.name}}</option>
       </select>
     </div>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button class="cancel-button" mat-button (click)="cancelTransfer()">Cancel</button>
-  <button class="transfer-button" mat-button cdkFocusInitial (click)="submitTransfer()">
-    Transfer
-  </button>
-</mat-dialog-actions>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button class="cancel-button" mat-button (click)="cancelTransfer()">Cancel</button>
+    <button class="transfer-button" mat-button cdkFocusInitial (click)="submitTransfer()">
+      Transfer
+    </button>
+  </mat-dialog-actions>
+</form>
